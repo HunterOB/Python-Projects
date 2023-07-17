@@ -8,43 +8,41 @@ import random
 
 
 def create_password():
+    lowercase_letters = 'abcdefghijklmnopqrstuvwxyz'
+    uppercase_letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    numbers = '0123456789'
+    special_characters = '!@#$%^&*()'
     password = []
-    pass_len = int(input("What length would you like the password: "))
+    password_len = int(input("What is the length you want for your password: "))
 
-    while len(password) < pass_len:
-        weighting_char = random.randint(0, 100)
-
-        if weighting_char < 50:
-            char = chr(random.randint(97, 122))
-
-        elif 50 < weighting_char < 75:
-            char = chr(random.randint(65, 90))
-
-        elif 75 < weighting_char < 90:
-            char = chr(random.randint(48, 57))
-
-        else:
-            # Because special characters are separated in the ascii table I need to make four different random ints
-            ascii_sorter = random.randint(1, 4)
-            if ascii_sorter == 1:
-                char = chr(random.randint(33, 47))
-            elif ascii_sorter == 2:
-                char = chr(random.randint(58, 64))
-            elif ascii_sorter == 3:
-                char = chr(random.randint(91, 96))
-            elif ascii_sorter == 4:
-                char = chr(random.randint(123, 126))
-        password.append(char)
-
+    for i in range(password_len):
+        char_decider = random.randint(1, 10)
+        if char_decider in range(1, 5):
+            char = random.choice(lowercase_letters)
+            password.append(char)
+        elif char_decider in range(5, 7):
+            char = random.choice(uppercase_letters)
+            password.append(char)
+        elif char_decider in range(7, 9):
+            char = random.choice(numbers)
+            password.append(char)
+        elif char_decider in range(9, 11):
+            char = random.choice(special_characters)
+            password.append(char)
     # Joins the separate letters in the list together into one singular string
     join_list = ""
     print(join_list.join(password))
+    pass_create_checker()
 
-    new_pass = input("Do you want a new password (Y for yes, N for no!)").capitalize()
-    if new_pass == "Y":
+
+def pass_create_checker():
+    new_password = input("Do you want a new password (Y for yes, N for no!)  ").capitalize()
+    if new_password == "Y":
         create_password()
-    else:
+    elif new_password == "N":
         quit()
+    else:
+        pass_create_checker()
 
 
-create_password()
+pass_create_checker()
