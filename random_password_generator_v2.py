@@ -8,10 +8,13 @@ import random
 
 
 def create_password():
+    # different chars, nums, and symbols that can appear in the password
     lowercase_letters = 'abcdefghijklmnopqrstuvwxyz'
     uppercase_letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     numbers = '0123456789'
     special_characters = '!@#$%^&*()'
+
+    # separate password characters are added into a list once they are generated and join to form a singular string
     password = []
     password_len = int(input("What is the length you want for your password: "))
 
@@ -35,6 +38,7 @@ def create_password():
     pass_create_checker()
 
 
+# Loops the password checker so that the user cna use it multiple times in one session
 def pass_create_checker():
     new_password = input("Do you want a new password (Y for yes, N for no!)  ").capitalize()
     if new_password == "Y":
