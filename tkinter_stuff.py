@@ -1,8 +1,4 @@
-"""
-v3 generates a random password from ascii characters adds a weighting system to make letters more
-common than numbers and special characters
-Adds a gui to make it easier to use
-"""
+
 
 import tkinter_password_generator as tk
 import random
