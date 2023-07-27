@@ -1,6 +1,5 @@
 
-
-import tkinter_password_generator as tk
+import tkinter_stuff as tk
 import random
 from tkinter import messagebox
 
@@ -10,7 +9,7 @@ root.geometry("500x500")
 root.title("Password Generator V3")
 
 label = tk.Label(root, text="Please enter password length", font=('Calibri', 18))
-label.pack(padx=20, pady=(30,10))
+label.pack(padx=20, pady=(30 ,10))
 
 textbox = tk.Text(root, height=1, font=('Calibri', 16))
 textbox.pack(padx=50)
@@ -23,10 +22,10 @@ buttonframe.columnconfigure(0, weight=10)
 buttonframe.columnconfigure(1, weight=10)
 
 btn1 = tk.Button(buttonframe, text="Yes", font=('Calibri', 18))
-btn1.grid(row=0, column=0, sticky=tk.W+tk.E, padx=(15, 7.5))
+btn1.grid(row=0, column=0, sticky=tk. W +tk.E, padx=(15, 7.5))
 
 btn2 = tk.Button(buttonframe, text="No", font=('Calibri', 18))
-btn2.grid(row=0, column=1, sticky=tk.W+tk.E, padx=(7.5, 15))
+btn2.grid(row=0, column=1, sticky=tk. W +tk.E, padx=(7.5, 15))
 buttonframe.pack(fill='x')
 
 class MyGUI:
@@ -61,4 +60,3 @@ class MyGUI:
 
 
 root.mainloop()
-

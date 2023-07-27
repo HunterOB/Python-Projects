@@ -38,7 +38,7 @@ def create_password(password_len):
             char = random.choice(special_characters)
             password.append(char)
     # Joins the separate letters in the list together into one singular string
-    password_str = "".join((password))
+    password_str = "".join(password)
     return password_str
 
 
@@ -56,15 +56,15 @@ class MyGUI:
 
         self.check_state = tk.IntVar()
 
-        self.button = tk.Button(self.root, text="Generate New Password", font=('Calibri', 16), command=self.show_message)
+        self.button = tk.Button(self.root, text="Generate New Password", font=('Calibri', 16),
+                                command=self.show_message)
         self.button.pack(padx=10, pady=10)
 
         self.password_label = tk.Label(self.root, text="", font=('Calibri', 16))
         self.password_label.pack(padx=10, pady=10)
 
-
         copied_clipboard_font = font.Font(slant="italic")
-        self.copied_clipboard = tk.Label(self.root, text="", font=copied_clipboard_font )
+        self.copied_clipboard = tk.Label(self.root, text="", font=copied_clipboard_font)
         self.copied_clipboard.pack(padx=10, pady=5)
 
         self.root.mainloop()
@@ -72,11 +72,15 @@ class MyGUI:
     def show_message(self):
         if self.check_state.get() == 0:
             password_len = int(self.textbox.get('1.0', tk.END))
-            password = create_password(password_len)
-            copied_clipboard_text = "password copied to clipboard"
-            self.password_label.config(text="Your Password:" + password)
-            pyperclip.copy(password)
-            self.copied_clipboard.config(text=copied_clipboard_text)
+            if password_len <  100:
+                password = create_password(password_len)
+                copied_clipboard_text = "password copied to clipboard"
+                self.password_label.config(text="Your Password:" + password)
+                pyperclip.copy(password)
+                self.copied_clipboard.config(text=copied_clipboard_text)
+
+            else:
+                quit("Please enter a valid number")
 
         else:
             messagebox.showinfo(title="Message", message=self.textbox.get('1.0', tk.END))
